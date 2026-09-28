@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Totally Not a Virus</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      padding: 20px;
+    }
+    #output {
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <div id="output"></div>
+  <script>
+    const messages = [
+      "hi chechiii",
+      "relax, its aarush here",
+      "u just fell for my virus",
+      "relax nothing bad will happen",
+      "im not gonna steal any of ur data lol",
+      "this is just to prove im smarter than u",
+      "lmao",
+      "ok this will self destruct now",
+      "byeeee"
+    ];
+
+    let i = 0;
+    function typeMessage(msg, callback) {
+      let j = 0;
+      const interval = setInterval(() => {
+        document.getElementById("output").textContent += msg[j];
+        j++;
+        if (j === msg.length) {
+          clearInterval(interval);
+          document.getElementById("output").textContent += "\n";
+          setTimeout(callback, 1000);
+        }
+      }, 50); // typing speed
+    }
+
+    function nextMessage() {
+      if (i < messages.length) {
+        typeMessage(messages[i], nextMessage);
+        i++;
+      }
+    }
+
+    nextMessage();
+  </script>
+</body>
+</html>
